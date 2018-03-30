@@ -60,9 +60,7 @@ document.addEventListener("DOMContentLoaded", function() {
         console.log(`Board Generated`)
     };
 
-
-
-    cardBoardGenerator(16);
+    
 
     //
     // Event Listeners
@@ -72,5 +70,15 @@ document.addEventListener("DOMContentLoaded", function() {
         if (event.target.tagName === "DIV") {
 
         }
-    })
+    });
+
+    //
+    // Main
+    //
+
+    function main() {
+        cardBoardGenerator(16);
+    }
+
+    main();
 });
