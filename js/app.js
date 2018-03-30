@@ -10,6 +10,10 @@ document.addEventListener("DOMContentLoaded", function() {
         "https://picsum.photos/206",
         "https://picsum.photos/207"
     ];
+    const foundCards = [];
+
+    let firstCard;
+    let secondCard;
     let cardBoard;
 
 
@@ -17,8 +21,8 @@ document.addEventListener("DOMContentLoaded", function() {
         console.log(`Creating ${number} cards!`);
         const deck = new Array(number);
         for (let i = 0 ; i < number/2 ; i++) {
-            deck[i * 2] = i +1;
-            deck[i * 2 + 1] = i +1;
+            deck[i * 2] = i;
+            deck[i * 2 + 1] = i;
         }
         return deck;
     }
@@ -46,8 +50,8 @@ document.addEventListener("DOMContentLoaded", function() {
         console.log(`Creating ${number} Cards!`);
         for (let i = 0; i < number ; i++) {
             const div = document.createElement("div");
-            div.classList.add("card");
-            div.classList.add(cardBoard[i]);
+            div.classList.add("play-card");
+            div.id = `${i}`; // cardBoard[i]
 
             board.appendChild(div)
         }
@@ -60,15 +64,46 @@ document.addEventListener("DOMContentLoaded", function() {
         console.log(`Board Generated`)
     };
 
-    
+    const flipCard = function(card) {
+        if (card.className.includes("selected") &&
+            !foundCards.includes((card))) {
+            console.log("backflip!");
+            card.classList.remove("selected");
+            card.style.backgroundImage = null;
+
+        }else {
+            card.classList.add("selected");
+            card.style.backgroundImage = `url(${imgStack[cardBoard[card.id]]})`;
+        }
+
+    };
+
+
 
     //
     // Event Listeners
     //
 
     board.addEventListener("click", function(event) {
-        if (event.target.tagName === "DIV") {
-
+        if (event.target.tagName === "DIV" &&
+            event.target.className.includes("play-card")) {
+            const card = event.target;
+            flipCard(card);
+            if (firstCard == null){
+                firstCard = card
+            }else {
+                secondCard = card;
+                if (cardBoard[secondCard.id] === cardBoard[firstCard.id]) {
+                    console.log("You found a match!");
+                    firstCard.classList.add("matched");
+                    secondCard.classList.add("matched");
+                    foundCards.push(firstCard, secondCard);
+                }else {
+                    flipCard(firstCard);
+                    flipCard(secondCard);
+                }
+                [firstCard, secondCard] = [null, null]
+            }
         }
     });
 
