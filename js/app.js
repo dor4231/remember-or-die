@@ -128,6 +128,10 @@ document.addEventListener("DOMContentLoaded", function() {
             }else {
                 timer.innerText = `${M}:${S}`
             }
+
+            if (S % 15 === 0) {
+                player.health -= 1;
+            }
         }, 1000);
     };
 
@@ -183,6 +187,7 @@ document.addEventListener("DOMContentLoaded", function() {
     });
 
     document.querySelector(".start-game").addEventListener("click", function(event) {
+        document.querySelector(".pop-up.start").classList.add("hidden");
         if (document.querySelector("#username").value === "Enter your name..."){
             main("Guest");
         }else {
