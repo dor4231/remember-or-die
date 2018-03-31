@@ -182,16 +182,22 @@ document.addEventListener("DOMContentLoaded", function() {
         }
     });
 
+    document.querySelector(".start-game").addEventListener("click", function(event) {
+        if (document.querySelector("#username").value === "Enter your name..."){
+            main("Guest");
+        }else {
+            main(document.querySelector("#username").value);
+        }
+    });
+
     //
     // Main
     //
 
     function main(name) {
         player = new Player(name);
+        document.querySelector("#usernameDisplay").innerHTML = name
         cardBoardGenerator(16);
         player.time = startTimer();
     }
-
-    main(document.querySelector("#username").value);
-
 });
