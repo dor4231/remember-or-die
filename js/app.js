@@ -117,8 +117,8 @@ document.addEventListener("DOMContentLoaded", function() {
         let timerSeconds = 0;
         return setInterval(function() {
             timerSeconds += 1;
-            M = parseInt(timerSeconds / 60);
-            S = timerSeconds % 60;
+            let M = Math.floor(timerSeconds / 60);
+            let S = timerSeconds % 60;
             if (S < 10 && M < 10){
                 timer.innerText = `0${M}:0${S}`
             }else if (S < 10){
@@ -131,6 +131,8 @@ document.addEventListener("DOMContentLoaded", function() {
 
             if (S % 15 === 0) {
                 player.health -= 1;
+            }else if (player.health <= 0) {
+                endGame("lose")
             }
         }, 1000);
     };
@@ -186,7 +188,7 @@ document.addEventListener("DOMContentLoaded", function() {
         }
     });
 
-    document.querySelector(".start-game").addEventListener("click", function(event) {
+    document.querySelector(".start-game").addEventListener("click", function() {
         document.querySelector(".pop-up.start").classList.add("hidden");
         if (document.querySelector("#username").value === "Enter your name..."){
             main("Guest");
@@ -195,13 +197,23 @@ document.addEventListener("DOMContentLoaded", function() {
         }
     });
 
+    document.querySelector("#restart-game").addEventListener("click", function() {
+        for (const card of document.querySelectorAll(".card-board .play-card")){
+            board.removeChild(card);
+        }
+        for (const popup of document.querySelectorAll(".card-board .pop-up")) {
+            popup.classList.add("hidden");
+        }
+        document.querySelector(".pop-up.start").classList.remove("hidden");
+    });
+
     //
     // Main
     //
 
     function main(name) {
         player = new Player(name);
-        document.querySelector("#usernameDisplay").innerHTML = name
+        document.querySelector("#usernameDisplay").innerHTML = name;
         cardBoardGenerator(16);
         player.time = startTimer();
     }
