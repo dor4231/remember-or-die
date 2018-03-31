@@ -10,6 +10,7 @@ document.addEventListener("DOMContentLoaded", function() {
         "https://picsum.photos/206",
         "https://picsum.photos/207"
     ];
+    const imgStackTemp = [];
     const foundCards = [];
 
     let player;
@@ -62,8 +63,23 @@ document.addEventListener("DOMContentLoaded", function() {
         }
     };
 
+    const downloadImages = function() {
+        for (const img of imgStack) {
+            const oReq = new XMLHttpRequest();
+            oReq.open("GET", img , true);
+            oReq.responseType = "blob";
+
+            oReq.onload = function() {
+                imgStackTemp.push(oReq.response);
+            };
+
+            oReq.send();
+        }
+    };
+
     const cardBoardGenerator = function(size) {
         let deck = createDeck(size);
+        downloadImages();
         cardBoard = shuffleDeck(deck);
         createCards(size);
         console.log(`Board Generated`)
@@ -72,13 +88,13 @@ document.addEventListener("DOMContentLoaded", function() {
     const flipCard = function(card) {
         if (card.className.includes("selected") &&
             !foundCards.includes((card))) {
-            console.log("backflip!");
             card.classList.remove("selected");
             card.style.backgroundImage = null;
 
         }else {
             card.classList.add("selected");
-            card.style.backgroundImage = `url(${imgStack[cardBoard[card.id]]})`;
+            const imgUrl = window.URL.createObjectURL(imgStackTemp[cardBoard[card.id]]);
+            card.style.backgroundImage = `url(${imgUrl})`;
         }
 
     };
@@ -144,4 +160,6 @@ document.addEventListener("DOMContentLoaded", function() {
     //
     // Timer
     //
+
+
 });
