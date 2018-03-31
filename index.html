@@ -21,8 +21,8 @@
                 <button id="restart-game">
                     <img src="assets/images/retry.png">
                 </button>
-                <div class="time">
-                    <span>00:00</span>
+                <div class="timer">
+                    <span></span>
                 </div>
             </div>
             <div class="card-board">
@@ -33,15 +33,20 @@
                 <div class="pop-up lose hidden">
                     <h3>You are dead!</h3>
                 </div>
-                <div class="pop-up start hidden">
+                <div class="pop-up start">
                     <h3>Start Your Game</h3>
                     <p>
                         You find yourself in a scary room. The room is empty
                         except of one table and a door. You notice a strange
                         looking board on the wall. You touch it...
 
-
+                        The board starts to glow and asks:
                     </p>
+                    <div>
+                        <label for="username">What is your name?</label>
+                        <input type="text" id="username" value="Enter your name...">
+                    </div>
+
                 </div>
             </div>
             <div class="turn control">
@@ -49,7 +54,7 @@
                     <img src="#">
                 </div>
                 <div class="moves">
-                    <span>15</span>
+                    <span>0</span>
                 </div>
             </div>
         </section>

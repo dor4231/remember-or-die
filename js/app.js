@@ -101,10 +101,35 @@ document.addEventListener("DOMContentLoaded", function() {
 
 
     const endGame = function(type) {
+        clearInterval(player.time);
+        player.time = document.querySelector(".timer span").innerHTML;
+        player.moves = document.querySelector(".moves span").innerHTML;
         document.querySelector(`.${type}`).classList.remove("hidden");
     };
 
 
+    //
+    // Timer
+    //
+
+    const startTimer = function() {
+        const timer = document.querySelector(".timer span");
+        let timerSeconds = 0;
+        return setInterval(function() {
+            timerSeconds += 1;
+            M = parseInt(timerSeconds / 60);
+            S = timerSeconds % 60;
+            if (S < 10 && M < 10){
+                timer.innerText = `0${M}:0${S}`
+            }else if (S < 10){
+                timer.innerText = `${M}:0${S}`
+            }else if (M < 10) {
+                timer.innerText = `0${M}:${S}`
+            }else {
+                timer.innerText = `${M}:${S}`
+            }
+        }, 1000);
+    };
 
     //
     // Event Listeners
@@ -145,21 +170,28 @@ document.addEventListener("DOMContentLoaded", function() {
         }
     });
 
+    document.querySelector("#username").addEventListener("focus", function(event) {
+        if(event.target.value.includes("Enter")) {
+            event.target.value = "";
+        }
+    });
+
+    document.querySelector("#username").addEventListener("blur", function(event) {
+        if(event.target.value === "") {
+            event.target.value = "Enter your name...";
+        }
+    });
+
     //
     // Main
     //
 
-    function main() {
-        player = new Player("dor");
+    function main(name) {
+        player = new Player(name);
         cardBoardGenerator(16);
+        player.time = startTimer();
     }
 
-    main();
-
-
-    //
-    // Timer
-    //
-
+    main(document.querySelector("#username").value);
 
 });
