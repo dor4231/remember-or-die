@@ -12,10 +12,15 @@ document.addEventListener("DOMContentLoaded", function() {
     ];
     const foundCards = [];
 
+    let player;
     let firstCard;
     let secondCard;
     let cardBoard;
+    let waiting = true;
 
+    function sleep(ms) {
+        return new Promise(resolve => setTimeout(resolve, ms));
+    }
 
     function createDeck(number) {
         console.log(`Creating ${number} cards!`);
@@ -79,14 +84,20 @@ document.addEventListener("DOMContentLoaded", function() {
     };
 
 
+    const endGame = function(type) {
+        document.querySelector(`.${type}`).classList.remove("hidden");
+    };
+
+
 
     //
     // Event Listeners
     //
 
-    board.addEventListener("click", function(event) {
+    board.addEventListener("click", async function(event) {
         if (event.target.tagName === "DIV" &&
-            event.target.className.includes("play-card")) {
+            event.target.className.includes("play-card") &&
+            waiting) {
             const card = event.target;
             flipCard(card);
             if (firstCard == null){
@@ -98,9 +109,20 @@ document.addEventListener("DOMContentLoaded", function() {
                     firstCard.classList.add("matched");
                     secondCard.classList.add("matched");
                     foundCards.push(firstCard, secondCard);
+                    if (foundCards.length >= 16) {
+                        endGame("win");
+                    }
                 }else {
+                    player.health -= 1;
+                    if (player.health <= 0){
+                        endGame("lose");
+                    }
+                    waiting = false;
+                    await sleep(1000);
+                    waiting = true;
                     flipCard(firstCard);
                     flipCard(secondCard);
+
                 }
                 [firstCard, secondCard] = [null, null]
             }
@@ -112,8 +134,14 @@ document.addEventListener("DOMContentLoaded", function() {
     //
 
     function main() {
+        player = new Player("dor");
         cardBoardGenerator(16);
     }
 
     main();
+
+
+    //
+    // Timer
+    //
 });
