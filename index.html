@@ -16,10 +16,10 @@
         <section class="app-container">
             <div class="game control">
                 <button id="leaderboard">
-                    <img src="#">
+                    <img src="assets/images/leaderboard.png">
                 </button>
-                <button id="reset-game">
-                    <img src="#">
+                <button id="restart-game">
+                    <img src="assets/images/retry.png">
                 </button>
                 <div class="time">
                     <span>00:00</span>
@@ -27,22 +27,32 @@
             </div>
             <div class="card-board">
                 <!--Generate Card Here-->
+                <div class="pop-up win hidden">
+                    <h3>Congratulations</h3>
+                </div>
+                <div class="pop-up lose hidden">
+                    <h3>You are dead!</h3>
+                </div>
+                <div class="pop-up start hidden">
+                    <h3>Start Your Game</h3>
+                    <p>
+                        You find yourself in a scary room. The room is empty
+                        except of one table and a door. You notice a strange
+                        looking board on the wall. You touch it...
+
+
+                    </p>
+                </div>
             </div>
             <div class="turn control">
                 <div class="health-avatar">
                     <img src="#">
                 </div>
-                <div class="time">
+                <div class="moves">
                     <span>15</span>
                 </div>
             </div>
         </section>
-        <div class="pop-up win hidden">
-            <h3>Congratulations</h3>
-        </div>
-        <div class="pop-up lose hidden">
-            <h3>You are dead!</h3>
-        </div>
     </main>
 </body>
 </html>
