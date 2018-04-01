@@ -79,7 +79,6 @@ document.addEventListener("DOMContentLoaded", function() {
 
     const cardBoardGenerator = function(size) {
         let deck = createDeck(size);
-        downloadImages();
         cardBoard = shuffleDeck(deck);
         createCards(size);
         console.log(`Board Generated`)
@@ -188,7 +187,7 @@ document.addEventListener("DOMContentLoaded", function() {
         }
     });
 
-    document.querySelector(".start-game").addEventListener("click", function() {
+    document.querySelector(".start-game-button").addEventListener("click", function() {
         document.querySelector(".pop-up.start").classList.add("hidden");
         if (document.querySelector("#username").value === "Enter your name..."){
             main("Guest");
@@ -217,4 +216,6 @@ document.addEventListener("DOMContentLoaded", function() {
         cardBoardGenerator(16);
         player.time = startTimer();
     }
+
+    downloadImages();
 });
