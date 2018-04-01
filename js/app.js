@@ -108,7 +108,7 @@ document.addEventListener("DOMContentLoaded", function() {
         if (card.className.includes("selected") &&
             !player.foundCards.includes((card))) {
             card.classList.remove("selected");
-            card.style.backgroundImage = null;
+            card.style = null;
 
         }else {
             card.classList.add("selected");
