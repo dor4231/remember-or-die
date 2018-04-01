@@ -106,7 +106,7 @@ document.addEventListener("DOMContentLoaded", function() {
 
     const flipCard = function(card) {
         if (card.className.includes("selected") &&
-            !foundCards.includes((card))) {
+            !player.foundCards.includes((card))) {
             card.classList.remove("selected");
             card.style.backgroundImage = null;
 
@@ -175,8 +175,8 @@ document.addEventListener("DOMContentLoaded", function() {
                     console.log("You found a match!");
                     firstCard.classList.add("matched");
                     secondCard.classList.add("matched");
-                    foundCards.push(firstCard, secondCard);
-                    if (foundCards.length >= 16) {
+                    player.foundCards.push(firstCard, secondCard);
+                    if (player.foundCards.length >= 16) {
                         endGame("win");
                     }
                 }else {
