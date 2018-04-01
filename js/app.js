@@ -94,6 +94,8 @@ document.addEventListener("DOMContentLoaded", function() {
             card.classList.add("selected");
             const imgUrl = window.URL.createObjectURL(imgStackTemp[cardBoard[card.id]]);
             card.style.backgroundImage = `url(${imgUrl})`;
+            card.style.backgroundRepeat = "no-repeat";
+            card.style.backgroundSize = "cover";
         }
 
     };
@@ -170,6 +172,8 @@ document.addEventListener("DOMContentLoaded", function() {
                     flipCard(secondCard);
 
                 }
+                player.moves += 1;
+                document.querySelector(".moves span").innerHTML = player.moves;
                 [firstCard, secondCard] = [null, null]
             }
         }
@@ -197,6 +201,7 @@ document.addEventListener("DOMContentLoaded", function() {
     });
 
     document.querySelector("#restart-game").addEventListener("click", function() {
+        clearInterval(player.time);
         for (const card of document.querySelectorAll(".card-board .play-card")){
             board.removeChild(card);
         }
@@ -212,7 +217,7 @@ document.addEventListener("DOMContentLoaded", function() {
 
     function main(name) {
         player = new Player(name);
-        document.querySelector("#usernameDisplay").innerHTML = name;
+        document.querySelector("#usernameDisplay").innerHTML = player.name;
         cardBoardGenerator(16);
         player.time = startTimer();
     }
