@@ -123,6 +123,9 @@ document.addEventListener("DOMContentLoaded", function() {
 
     const endGame = function(type) {
         clearInterval(player.time);
+        for (const card of document.querySelectorAll(".card-board .play-card")){
+            board.removeChild(card);
+        }
         player.time = document.querySelector(".timer span").innerHTML;
         player.moves = document.querySelector(".moves span").innerHTML;
         document.querySelector(`.${type}`).classList.remove("hidden");
