@@ -1,5 +1,6 @@
 document.addEventListener("DOMContentLoaded", function() {
     const board = document.querySelector(".card-board");
+    const playerState = document.querySelector(".health-avatar img");
     const imgStack = [
         "https://picsum.photos/200",
         "https://picsum.photos/201",
@@ -14,6 +15,7 @@ document.addEventListener("DOMContentLoaded", function() {
     const foundCards = [];
 
     let player;
+    let fullHealth;
     let firstCard;
     let secondCard;
     let cardBoard;
@@ -32,6 +34,24 @@ document.addEventListener("DOMContentLoaded", function() {
         }
         return deck;
     }
+
+
+    const changePlayerState = function() {
+        if (player.health <= fullHealth * 0) {
+            playerState.src = "assets/images/Dead Face.png";
+            playerState.style.backgroundColor = "#999";
+            endGame("lose");
+        }else if (player.health <= fullHealth * 0.3) {
+            playerState.src = "assets/images/Scary Face.png";
+            playerState.style.background = "#FB000D";
+        }else if (player.health <= fullHealth * 0.75) {
+            playerState.src = "assets/images/Worried Face.png";
+            playerState.style.background = "#FF8500";
+        }else {
+            playerState.src = "assets/images/Happy Face.png";
+            playerState.style.background = "#22aa66";
+        }
+    };
 
     const shuffleDeck = function (array) {
         console.log(`Shuffling ${array.length} cards!`);
@@ -132,8 +152,7 @@ document.addEventListener("DOMContentLoaded", function() {
 
             if (S % 15 === 0) {
                 player.health -= 1;
-            }else if (player.health <= 0) {
-                endGame("lose")
+                changePlayerState();
             }
         }, 1000);
     };
@@ -162,17 +181,15 @@ document.addEventListener("DOMContentLoaded", function() {
                     }
                 }else {
                     player.health -= 1;
-                    if (player.health <= 0){
-                        endGame("lose");
-                    }
+                    changePlayerState();
                     waiting = false;
                     await sleep(1000);
                     waiting = true;
                     flipCard(firstCard);
                     flipCard(secondCard);
-
                 }
                 player.moves += 1;
+                changePlayerState();
                 document.querySelector(".moves span").innerHTML = player.moves;
                 [firstCard, secondCard] = [null, null]
             }
@@ -217,6 +234,7 @@ document.addEventListener("DOMContentLoaded", function() {
 
     function main(name) {
         player = new Player(name);
+        fullHealth = player.health;
         document.querySelector("#usernameDisplay").innerHTML = player.name;
         cardBoardGenerator(16);
         player.time = startTimer();
