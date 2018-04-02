@@ -1,4 +1,4 @@
-document.addEventListener("DOMContentLoaded", function() {
+document.addEventListener("DOMContentLoaded", function () {
     const board = document.querySelector(".card-board");
     const playerState = document.querySelector(".health-avatar img");
     const imgStack = [
@@ -27,7 +27,7 @@ document.addEventListener("DOMContentLoaded", function() {
     function createDeck(number) {
         console.log(`Creating ${number} cards!`);
         const deck = new Array(number);
-        for (let i = 0 ; i < number/2 ; i++) {
+        for (let i = 0; i < number / 2; i++) {
             deck[i * 2] = i;
             deck[i * 2 + 1] = i;
         }
@@ -35,18 +35,18 @@ document.addEventListener("DOMContentLoaded", function() {
     }
 
 
-    const changePlayerState = function() {
+    const changePlayerState = function () {
         if (player.health <= 0) {
             playerState.src = "assets/images/Dead Face.png";
             playerState.style.backgroundColor = "#999";
             endGame("lose");
-        }else if (player.health <= fullHealth * 0.3) {
+        } else if (player.health <= fullHealth * 0.3) {
             playerState.src = "assets/images/Scary Face.png";
             playerState.style.background = "#FB000D";
-        }else if (player.health <= fullHealth * 0.75) {
+        } else if (player.health <= fullHealth * 0.75) {
             playerState.src = "assets/images/Worried Face.png";
             playerState.style.background = "#FF8500";
-        }else {
+        } else {
             playerState.src = "assets/images/Happy Face.png";
             playerState.style.background = "#22aa66";
         }
@@ -71,9 +71,9 @@ document.addEventListener("DOMContentLoaded", function() {
         return array;
     };
 
-    const createCards = function(number) {
+    const createCards = function (number) {
         console.log(`Creating ${number} Cards!`);
-        for (let i = 0; i < number ; i++) {
+        for (let i = 0; i < number; i++) {
             const div = document.createElement("div");
             div.classList.add("play-card");
             div.id = `${i}`; // cardBoard[i]
@@ -82,13 +82,13 @@ document.addEventListener("DOMContentLoaded", function() {
         }
     };
 
-    const downloadImages = function() {
+    const downloadImages = function () {
         for (const img of imgStack) {
             const oReq = new XMLHttpRequest();
-            oReq.open("GET", img , true);
+            oReq.open("GET", img, true);
             oReq.responseType = "blob";
 
-            oReq.onload = function() {
+            oReq.onload = function () {
                 imgStackTemp.push(oReq.response);
             };
 
@@ -96,20 +96,20 @@ document.addEventListener("DOMContentLoaded", function() {
         }
     };
 
-    const cardBoardGenerator = function(size) {
+    const cardBoardGenerator = function (size) {
         let deck = createDeck(size);
         cardBoard = shuffleDeck(deck);
         createCards(size);
         console.log(`Board Generated`)
     };
 
-    const flipCard = function(card) {
+    const flipCard = function (card) {
         if (card.className.includes("selected") &&
             !player.foundCards.includes((card))) {
             card.classList.remove("selected");
             card.style = null;
 
-        }else {
+        } else {
             card.classList.add("selected");
             const imgUrl = window.URL.createObjectURL(imgStackTemp[cardBoard[card.id]]);
             card.style.backgroundImage = `url(${imgUrl})`;
@@ -121,9 +121,9 @@ document.addEventListener("DOMContentLoaded", function() {
     };
 
 
-    const endGame = function(type) {
+    const endGame = function (type) {
         clearInterval(player.time);
-        for (const card of document.querySelectorAll(".card-board .play-card")){
+        for (const card of document.querySelectorAll(".card-board .play-card")) {
             board.removeChild(card);
         }
         player.time = document.querySelector(".timer span").innerHTML;
@@ -136,26 +136,25 @@ document.addEventListener("DOMContentLoaded", function() {
     // Timer
     /////////////////
 
-    const startTimer = function() {
+    const startTimer = function () {
         const timer = document.querySelector(".timer span");
         let timerSeconds = 0;
-        return setInterval(async function() {
+        return setInterval(async function () {
             timerSeconds += 1;
             let M = Math.floor(timerSeconds / 60);
             let S = timerSeconds % 60;
-            if (S < 10 && M < 10){
+            if (S < 10 && M < 10) {
                 timer.innerText = `0${M}:0${S}`
-            }else if (S < 10){
+            } else if (S < 10) {
                 timer.innerText = `${M}:0${S}`
-            }else if (M < 10) {
+            } else if (M < 10) {
                 timer.innerText = `0${M}:${S}`
-            }else {
+            } else {
                 timer.innerText = `${M}:${S}`
             }
 
             if (S % 15 === 0) {
-                for (let i = 0; i <= 4 ; i++){
-                    console.log("hit!");
+                for (let i = 0; i <= 4; i++) {
                     timer.style.color = "#1a1a1a";
                     await sleep(200);
                     timer.style.color = null;
@@ -171,15 +170,15 @@ document.addEventListener("DOMContentLoaded", function() {
     // Event Listeners
     //
 
-    board.addEventListener("click", async function(event) {
+    board.addEventListener("click", async function (event) {
         if (event.target.tagName === "DIV" &&
             event.target.className.includes("play-card") &&
             waiting) {
             const card = event.target;
             flipCard(card);
-            if (firstCard == null){
+            if (firstCard == null) {
                 firstCard = card
-            }else {
+            } else {
                 secondCard = card;
                 if (cardBoard[secondCard.id] === cardBoard[firstCard.id]) {
                     console.log("You found a match!");
@@ -189,7 +188,7 @@ document.addEventListener("DOMContentLoaded", function() {
                     if (player.foundCards.length >= 16) {
                         endGame("win");
                     }
-                }else {
+                } else {
                     player.health -= 1;
                     changePlayerState();
                     waiting = false;
@@ -206,30 +205,30 @@ document.addEventListener("DOMContentLoaded", function() {
         }
     });
 
-    document.querySelector("#username").addEventListener("focus", function(event) {
-        if(event.target.value.includes("Enter")) {
+    document.querySelector("#username").addEventListener("focus", function (event) {
+        if (event.target.value.includes("Enter")) {
             event.target.value = "";
         }
     });
 
-    document.querySelector("#username").addEventListener("blur", function(event) {
-        if(event.target.value === "") {
+    document.querySelector("#username").addEventListener("blur", function (event) {
+        if (event.target.value === "") {
             event.target.value = "Enter your name...";
         }
     });
 
-    document.querySelector(".start-game-button").addEventListener("click", function() {
+    document.querySelector(".start-game-button").addEventListener("click", function () {
         document.querySelector(".pop-up.start").classList.add("hidden");
-        if (document.querySelector("#username").value === "Enter your name..."){
+        if (document.querySelector("#username").value === "Enter your name...") {
             main("Guest");
-        }else {
+        } else {
             main(document.querySelector("#username").value);
         }
     });
 
-    document.querySelector("#restart-game").addEventListener("click", function() {
+    document.querySelector("#restart-game").addEventListener("click", function () {
         clearInterval(player.time);
-        for (const card of document.querySelectorAll(".card-board .play-card")){
+        for (const card of document.querySelectorAll(".card-board .play-card")) {
             board.removeChild(card);
         }
         for (const popup of document.querySelectorAll(".card-board .pop-up")) {
@@ -238,9 +237,19 @@ document.addEventListener("DOMContentLoaded", function() {
         document.querySelector(".pop-up.start").classList.remove("hidden");
     });
 
-    //
+    document.addEventListener("orientationchange", function () {
+        if (window.innerHeight > window.innerWidth) {
+            document.querySelector(".app-container").classList.add("hidden");
+            document.querySelector(".alert").classList.remove("hidden");
+        } else {
+            document.querySelector(".app-container").classList.remove("hidden");
+            document.querySelector(".alert").classList.add("hidden");
+        }
+    });
+
+    //////////////
     // Main
-    //
+    /////////////
 
     function main(name) {
         player = new Player(name);

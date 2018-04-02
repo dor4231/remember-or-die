@@ -13,6 +13,7 @@ body, html {
     background-image: url("../assets/images/dark_wall.jpg");
     background-size: cover;
     background-repeat: no-repeat;
+    background-position-x: center;
 }
 
 /* Header */
@@ -145,6 +146,13 @@ header h1 {
 
 .hidden {
     display: none;
+}
+
+.alert {
+    color: red;
+    font-size: 6vw;
+    font-family: 'Handlee', cursive;
+    text-shadow: 0 0 10px 3px #FF7F00;
 }
 
 .pop-up.hidden {
@@ -285,9 +293,6 @@ header h1 {
 
 /* Lose Game */
 
-.pop-up.lose * {
-    /*border: 1px dashed red;*/
-}
 
 .pop-up.lose {
     background: rgba(0,0,0,1);
@@ -324,4 +329,77 @@ header h1 {
     border-radius: 40% 40% 80% 80%;
     opacity: 0.6;
     box-shadow: 0 0 10px 10px #FF7F00;
+}
+
+@media screen and (max-width: 1100px) {
+    header h1 {
+        font-size: 4.5vw;
+    }
+
+    .pop-up.start h3 {
+        font-size: 4vw;
+    }
+
+    .pop-up.start p {
+        font-size: 3vw;
+        text-shadow: 0 0 10px rgba(255, 255, 255, 1);
+    }
+
+    .pop-up.start p span {
+        font-size: 1.3em;
+    }
+
+    .start-game-form label {
+        font-size: 4vw;
+    }
+
+    .start-game-form input {
+        font-size: 2vw;
+    }
+
+    .start-game-button {
+        font-size: 3vw;
+        margin: 0 30% 5% 30%;
+    }
+
+    .game.control .timer {
+        font-size: 2.5vw;
+    }
+}
+
+@media screen and (max-width: 670px){
+    .app-container {
+        height: 50vw;
+    }
+
+    .app-container .control {
+        margin: 4% 2%
+    }
+
+    .pop-up.start {
+        flex-flow: column;
+    }
+
+    .pop-up.start h3 {
+        font-size: 4vw;
+        flex-basis: 10%;
+    }
+
+    .pop-up.start p {
+        font-size: 2.5vw;
+        flex-basis: 40%;
+        text-shadow: 0 0 10px rgba(255, 255, 255, 1);
+    }
+
+    .pop-up.start p span {
+        font-size: 1.3em;
+    }
+
+    .start-game-form {
+        flex-basis: 20%;
+    }
+
+    .start-game-button {
+        flex-basis: 10%;
+    }
 }
