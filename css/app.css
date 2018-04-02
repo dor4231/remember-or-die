@@ -480,7 +480,7 @@ header h1 {
     }
 
     .pop-up.lose h3 {
-        font-size: vw;
+        font-size: 9vw;
         flex-basis: 25%;
         width: 40%;
         text-align: left;

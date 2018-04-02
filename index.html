@@ -14,6 +14,7 @@
         <h1>Remember Or Die</h1>
     </header>
         <section class="app-container">
+            <!--Game Control-->
             <div class="game control">
                 <button class="hidden" id="leaderboard">
                     <img src="assets/images/leaderboard.png">
@@ -26,8 +27,10 @@
                     <span>00:00</span>
                 </div>
             </div>
+            <!--Card Board-->
             <div class="card-board">
                     <!--Generate Card Here-->
+                <!--Win pop up-->
                 <div class="pop-up win hidden">
                     <div class="img-holder">
                         <img src="assets/images/Open_Door.png" alt="Open door icon">
@@ -37,6 +40,7 @@
                         You can walk free now. You did it in
                     </p>
                 </div>
+                <!--Lose Pop Up-->
                 <div class="pop-up lose ">
                     <h3>Game Over</h3>
                     <p>You are dead!</p>
@@ -44,6 +48,7 @@
                         <img src="assets/images/lose.gif">
                     </div>
                 </div>
+                <!--Start Game pop up-->
                 <div class="pop-up start hidden">
                     <h3>Start Your Game</h3>
                     <p>
@@ -58,10 +63,15 @@
                     <div class="start-game-form">
                         <label for="username">What is your name?</label>
                         <input type="text" id="username" value="Enter your name...">
+                        <label for="challenge">
+                            <img src="assets/images/skull.png" alt="Skull image for challenge mode">
+                        </label>
+                        <input type="checkbox" id="challenge">
                     </div>
                     <button class="start-game-button">Start game</button>
                 </div>
             </div>
+            <!--Player Control-->
             <div class="player control">
                 <div class="health-avatar">
                     <img src="assets/images/Happy Face.png">
