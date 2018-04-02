@@ -115,6 +115,7 @@ document.addEventListener("DOMContentLoaded", function() {
             card.style.backgroundImage = `url(${imgUrl})`;
             card.style.backgroundRepeat = "no-repeat";
             card.style.backgroundSize = "cover";
+            card.style.backgroundPosition = "center";
         }
 
     };
