@@ -248,8 +248,14 @@ document.addEventListener("DOMContentLoaded", function () {
         }
     });
 
+    // Resets the game: timer, avatar, timer, move count, clear card-board and pop-ups
+    // Rises back the "Start Game" pop-up.
     document.querySelector("#restart-game").addEventListener("click", function () {
         clearInterval(player.time);
+        player.health = fullHealth;
+        document.querySelector(".timer span").innerHTML = "00:00";
+        document.querySelector(".moves span").innerHTML = 0;
+        changePlayerState();
         for (const card of document.querySelectorAll(".card-board .play-card")) {
             board.removeChild(card);
         }
@@ -257,16 +263,6 @@ document.addEventListener("DOMContentLoaded", function () {
             popup.classList.add("hidden");
         }
         document.querySelector(".pop-up.start").classList.remove("hidden");
-    });
-
-    document.addEventListener("orientationchange", function () {
-        if (window.innerHeight > window.innerWidth) {
-            document.querySelector(".app-container").classList.add("hidden");
-            document.querySelector(".alert").classList.remove("hidden");
-        } else {
-            document.querySelector(".app-container").classList.remove("hidden");
-            document.querySelector(".alert").classList.add("hidden");
-        }
     });
 
     //////////////
