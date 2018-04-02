@@ -12,7 +12,6 @@ document.addEventListener("DOMContentLoaded", function() {
         "https://picsum.photos/207"
     ];
     const imgStackTemp = [];
-    const foundCards = [];
 
     let player;
     let fullHealth;
@@ -37,7 +36,7 @@ document.addEventListener("DOMContentLoaded", function() {
 
 
     const changePlayerState = function() {
-        if (player.health <= fullHealth * 0) {
+        if (player.health <= 0) {
             playerState.src = "assets/images/Dead Face.png";
             playerState.style.backgroundColor = "#999";
             endGame("lose");
@@ -132,14 +131,14 @@ document.addEventListener("DOMContentLoaded", function() {
     };
 
 
-    //
+    //////////////////
     // Timer
-    //
+    /////////////////
 
     const startTimer = function() {
         const timer = document.querySelector(".timer span");
         let timerSeconds = 0;
-        return setInterval(function() {
+        return setInterval(async function() {
             timerSeconds += 1;
             let M = Math.floor(timerSeconds / 60);
             let S = timerSeconds % 60;
@@ -154,6 +153,13 @@ document.addEventListener("DOMContentLoaded", function() {
             }
 
             if (S % 15 === 0) {
+                for (let i = 0; i <= 4 ; i++){
+                    console.log("hit!");
+                    timer.style.color = "#1a1a1a";
+                    await sleep(200);
+                    timer.style.color = null;
+                    await sleep(200);
+                }
                 player.health -= 1;
                 changePlayerState();
             }

@@ -74,7 +74,7 @@ header h1 {
 }
 
 /**********************
- Game Control
+ General Control
  **********************/
 
 .app-container .control {
@@ -94,6 +94,20 @@ header h1 {
 
 .app-container .control img {
     max-width: 100%;
+}
+
+/**********************
+ Game Control
+ **********************/
+
+.game.control .timer {
+    border: 4px solid #6E0003;
+    border-radius: 10px;
+    background: #1a1a1a;
+    /*flex-basis: 100%;*/
+    font-family: 'Handlee', cursive;
+    font-size: 2.3em;
+    box-shadow: 0 0 10px 3px #FF7F00;
 }
 
 /**********************
