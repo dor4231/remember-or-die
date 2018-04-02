@@ -135,7 +135,7 @@ document.addEventListener("DOMContentLoaded", function () {
             secondCard.classList.add("matched");
             player.foundCards.push(firstCard, secondCard);
             if (player.foundCards.length >= cardBoard.length) {
-                endGame("win");
+                return endGame("win");
             }
         } else {
             player.health -= 1;
@@ -152,7 +152,7 @@ document.addEventListener("DOMContentLoaded", function () {
         [firstCard, secondCard] = [null, null]
     };
 
-    // Clearing the interval
+    // Clearing the interval, rising winning and losing pop-up and clear the card board.
     const endGame = function (type) {
         clearInterval(player.time);
         for (const card of document.querySelectorAll(".card-board .play-card")) {
@@ -160,6 +160,8 @@ document.addEventListener("DOMContentLoaded", function () {
         }
         player.time = document.querySelector(".timer span").innerHTML;
         player.moves = document.querySelector(".moves span").innerHTML;
+        const winMassage = document.querySelector(".win .massage");
+        winMassage.innerHTML += ` <span>${player.moves}</span> moves and it took ${player.time}. Good Job!`;
         document.querySelector(`.${type}`).classList.remove("hidden");
     };
 
