@@ -376,6 +376,10 @@ header h1 {
         margin: 4% 2%
     }
 
+    .health-avatar {
+        padding: 3px 3px 9px 3px;
+    }
+
     .pop-up.start {
         flex-flow: column;
     }
