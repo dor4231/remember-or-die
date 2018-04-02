@@ -255,6 +255,29 @@ header h1 {
     background: #2a6;
 }
 
+#challenge {
+    display: none;
+}
+
+#challenge:checked::before {
+    background: rgba(255,127,0, 0.6);
+}
+
+.pop-up.start .challenge {
+    position: absolute;
+    width: 10vw;
+    height: 10vw;
+}
+
+.pop-up.start .challenge {
+
+}
+
+.pop-up.start .challenge img {
+    width: 100%;
+}
+
+
 /* Win Game */
 
 .pop-up.win {

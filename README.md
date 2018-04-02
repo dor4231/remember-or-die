@@ -9,7 +9,7 @@ click on the Skull icon to enter the "Challenge mode".
 #### Normal mode:
 A game you cant lose and still get rated by the status avatar.
 
-#### Challenge mode:
+#### Challenge mode - not working yet:
 You have limited amount of incorrect guess to make before you lose
 game and "die". Pay attention to the time, player will lose health
 every 15 seconds.

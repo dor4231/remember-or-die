@@ -41,7 +41,7 @@
                     </p>
                 </div>
                 <!--Lose Pop Up-->
-                <div class="pop-up lose ">
+                <div class="pop-up lose hidden">
                     <h3>Game Over</h3>
                     <p>You are dead!</p>
                     <div class="img-holder">
@@ -49,7 +49,7 @@
                     </div>
                 </div>
                 <!--Start Game pop up-->
-                <div class="pop-up start hidden">
+                <div class="pop-up start">
                     <h3>Start Your Game</h3>
                     <p>
                         You find yourself in a scary room. The room is empty
@@ -63,8 +63,9 @@
                     <div class="start-game-form">
                         <label for="username">What is your name?</label>
                         <input type="text" id="username" value="Enter your name...">
-                        <label for="challenge">
+                        <label for="challenge" class="challenge hidden">
                             <img src="assets/images/skull.png" alt="Skull image for challenge mode">
+                            <span>Challenge Mode</span>
                         </label>
                         <input type="checkbox" id="challenge">
                     </div>
