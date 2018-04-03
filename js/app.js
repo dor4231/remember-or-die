@@ -272,6 +272,9 @@ document.addEventListener("DOMContentLoaded", function () {
     function main(name) {
         player = new Player(name);
         fullHealth = player.health;
+        if (document.querySelector("#challenge").checked) {
+            challenge = true;
+        }
         document.querySelector("#usernameDisplay").innerHTML = player.name;
         cardBoardGenerator(16);
         player.time = startTimer(player.losingHealth);
