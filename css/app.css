@@ -11,7 +11,7 @@ body, html {
     height: 100%;
     margin: 0;
     padding: 0;
-    background-image: url("../assets/images/dark_wall.jpg");
+    background-image: url("../assets/images/dark_wall-large.jpg");
     background-size: cover;
     background-repeat: no-repeat;
     background-position-x: center;
@@ -378,8 +378,16 @@ header h1 {
 }
 
 @media screen and (max-width: 1100px) {
+    body, html {
+        background-image: url("../assets/images/dark_wall-medium.jpg");
+    }
+
     header h1 {
         font-size: 4.5vw;
+    }
+
+    .app-container {
+        height: 69vw;
     }
 
     .pop-up.start h3 {
@@ -404,6 +412,8 @@ header h1 {
     }
 
     .start-game-button {
+        /*flex-basis: 10%;*/
+        padding: 0;
         font-size: 3vw;
         margin: 0 30% 5% 30%;
     }
@@ -440,6 +450,10 @@ header h1 {
 }
 
 @media screen and (max-width: 670px){
+    body, html {
+        background-image: url("../assets/images/dark_wall-small.jpg");
+    }
+
     .app-container {
         height: 50vw;
     }
