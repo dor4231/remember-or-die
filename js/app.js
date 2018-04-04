@@ -166,7 +166,7 @@ document.addEventListener("DOMContentLoaded", function () {
         const winMassage = document.querySelector(".win .massage");
 
         playerRating.innerHTML = `Your Rating: ${player.rating}`;
-        winMassage.innerHTML += ` <span>${player.moves}</span> moves and it took ${player.time}. Good Job!`;
+        winMassage.innerHTML = `You can walk free now. You did it in <span>${player.moves}</span> moves and it took ${player.time}. Good Job!`;
         document.querySelector(`.${type}`).classList.remove("hidden");
     };
 
@@ -267,6 +267,7 @@ document.addEventListener("DOMContentLoaded", function () {
             popup.classList.add("hidden");
         }
         document.querySelector(".pop-up.start").classList.remove("hidden");
+        [firstCard, secondCard] = [null, null];
     });
 
     //////////////
