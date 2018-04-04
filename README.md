@@ -14,12 +14,18 @@ You have limited amount of incorrect guess to make before you lose
 game and "die". Pay attention to the time, player will lose health
 every 15 seconds.
 
-
 ## Technical Information:
 While loading the page will download the images of the cards from "www.picsum.com"
 and store the images in an array. If it fails to download the images please check 
 your internet connection and refresh the page.
 
+## Rating mechanism:
+Based on the player avatar state the rating state changes.
+ - Happy Face => 3 stars
+ - Worried Face => 2 stars
+ - Scary Face => 1 star
+ - Dead Face => 0 stars - Available in Challenge mode only
+ 
 ## Known issues:
 * Will look good only in landscape orientation.
 
