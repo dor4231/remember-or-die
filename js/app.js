@@ -45,13 +45,16 @@ document.addEventListener("DOMContentLoaded", function () {
         if (player.health <= 0 && challenge) {
             playerState.src = "assets/images/Dead Face.png";
             playerState.style.backgroundColor = "#999";
+            player.rating = "☆☆☆";
             endGame("lose");
-        } else if (player.health <= fullHealth * 0.3) {
+        } else if (player.health <= fullHealth * 0.2) {
             playerState.src = "assets/images/Scary Face.png";
             playerState.style.background = "#FB000D";
-        } else if (player.health <= fullHealth * 0.75) {
+            player.rating = "★☆☆";
+        } else if (player.health <= fullHealth * 0.5) {
             playerState.src = "assets/images/Worried Face.png";
             playerState.style.background = "#FF8500";
+            player.rating = "★★☆";
         } else {
             playerState.src = "assets/images/Happy Face.png";
             playerState.style.background = "#22aa66";
@@ -159,10 +162,10 @@ document.addEventListener("DOMContentLoaded", function () {
             board.removeChild(card);
         }
         player.time = document.querySelector(".timer span").innerHTML;
-        const playerRating = document.querySelector(".win .rating");
+        const playerRating = document.querySelector(`.${type} .rating`);
         const winMassage = document.querySelector(".win .massage");
 
-        playerRating.innerHTML += ` ${player.rating}`;
+        playerRating.innerHTML = `Your Rating: ${player.rating}`;
         winMassage.innerHTML += ` <span>${player.moves}</span> moves and it took ${player.time}. Good Job!`;
         document.querySelector(`.${type}`).classList.remove("hidden");
     };
