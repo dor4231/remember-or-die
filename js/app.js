@@ -159,15 +159,16 @@ document.addEventListener("DOMContentLoaded", function () {
             board.removeChild(card);
         }
         player.time = document.querySelector(".timer span").innerHTML;
-        player.moves = document.querySelector(".moves span").innerHTML;
+        const playerRating = document.querySelector(".win .rating");
         const winMassage = document.querySelector(".win .massage");
+
+        playerRating.innerHTML += ` ${player.rating}`;
         winMassage.innerHTML += ` <span>${player.moves}</span> moves and it took ${player.time}. Good Job!`;
         document.querySelector(`.${type}`).classList.remove("hidden");
     };
 
     const cardBoardGenerator = function(size) {
-        // Create the cards deck, shuffle it and pu into the global "cardBoard"
-        // variable.
+        // Create the cards deck, shuffle it and pu into the global "cardBoard" variable.
         cardBoard = shuffleDeck(createDeck(size));
         // Creating cards as the length of card board.
         createCards(cardBoard);
@@ -254,7 +255,7 @@ document.addEventListener("DOMContentLoaded", function () {
         clearInterval(player.time);
         player.health = fullHealth;
         document.querySelector(".timer span").innerHTML = "00:00";
-        document.querySelector(".moves span").innerHTML = 0;
+        document.querySelector(".moves span").innerHTML = "0";
         changePlayerState();
         for (const card of document.querySelectorAll(".card-board .play-card")) {
             board.removeChild(card);

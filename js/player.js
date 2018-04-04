@@ -3,7 +3,8 @@ class Player {
         this.name = name;
         this.health = 15;
         this.moves = 0;
-        this.time = 0;
+        this.rating = "★★★";
+        this.time = null;
         this.foundCards = [];
         this.losingHealth = 15;
     }
