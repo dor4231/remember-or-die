@@ -180,7 +180,6 @@ header h1 {
 }
 
 
-
 /*******************
  Pop Ups
  *******************/
@@ -362,6 +361,10 @@ header h1 {
     margin: 0;
 }
 
+.pop-up.lose p.rating {
+    font-size: 3vw;
+}
+
 .pop-up.lose .img-holder {
     flex-basis: 30%;
 }
@@ -490,12 +493,14 @@ header h1 {
     .pop-up.win img {
         margin: 0;
         width: 160%;
+
     }
 
     .pop-up.win h3 {
         flex-basis: 21%;
         text-align: left;
         font-size: 8vw;
+        order: 1;
     }
 
     .pop-up.win p {
@@ -504,11 +509,14 @@ header h1 {
         text-align: left;
         margin: 0;
         font-size: 3.5vw;
+        order: 2;
     }
     .pop-up.lose {
         flex-flow: column wrap;
         justify-content: center;
     }
+
+
 
     .pop-up.lose .img-holder {
         flex-basis: 100%;
@@ -518,6 +526,7 @@ header h1 {
     }
 
     .pop-up.lose img {
+        order: 0;
         width: 55%;
         height: 35%;
         margin: 60% 0 60% 25%;
@@ -533,9 +542,13 @@ header h1 {
     }
 
     .pop-up.lose p {
-        flex-basis: 20%;
+        flex-basis: 15%;
         font-size: 5vw;
         text-align: left;
         order: 2;
+    }
+
+    .pop-up.lose p.rating {
+        order: 3;
     }
 }
