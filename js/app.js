@@ -132,7 +132,7 @@ document.addEventListener("DOMContentLoaded", function () {
     // Compare the two cards if matched add cards to foundCards
     // if not matched flip cards over and lose life. Cards will stay visible
     // For one second. While card are visible user can't flip other cards.
-    const compereCards = async function() {
+    const compereCards = async function () {
         if (cardBoard[secondCard.id] === cardBoard[firstCard.id]) {
             firstCard.classList.add("matched");
             secondCard.classList.add("matched");
@@ -170,7 +170,7 @@ document.addEventListener("DOMContentLoaded", function () {
         document.querySelector(`.${type}`).classList.remove("hidden");
     };
 
-    const cardBoardGenerator = function(size) {
+    const cardBoardGenerator = function (size) {
         // Create the cards deck, shuffle it and pu into the global "cardBoard" variable.
         cardBoard = shuffleDeck(createDeck(size));
         // Creating cards as the length of card board.
@@ -182,7 +182,7 @@ document.addEventListener("DOMContentLoaded", function () {
     // Timer
     /////////////////
 
-    const startTimer = function(losingHealth) {
+    const startTimer = function (losingHealth) {
         const timer = document.querySelector(".timer span");
         let timerSeconds = 0;
         return setInterval(async function () {
@@ -218,14 +218,14 @@ document.addEventListener("DOMContentLoaded", function () {
         if (card.className.includes("play-card")
             && waiting
             && card !== firstCard
-            && card !== secondCard){
+            && card !== secondCard) {
             flipCard(card);
             if (firstCard == null) {
                 firstCard = card
             } else if (secondCard == null) {
                 secondCard = card;
                 compereCards();
-            } else{
+            } else {
                 console.log("Too Many Clicks!");
             }
         }

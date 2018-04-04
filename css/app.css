@@ -64,11 +64,11 @@ header h1 {
     flex-basis: 20%;
     margin: 2.5% 2.5%;
     background: linear-gradient(27deg, #151515 5px, transparent 5px) 0 5px,
-                linear-gradient(207deg, #151515 5px, transparent 5px) 10px 0px,
-                linear-gradient(27deg, #222 5px, transparent 5px) 0px 10px,
-                linear-gradient(207deg, #222 5px, transparent 5px) 10px 5px,
-                linear-gradient(90deg, #1b1b1b 10px, transparent 10px),
-                linear-gradient(#1d1d1d 25%, #1a1a1a 25%, #1a1a1a 50%, transparent 50%, transparent 75%, #242424 75%, #242424);
+    linear-gradient(207deg, #151515 5px, transparent 5px) 10px 0px,
+    linear-gradient(27deg, #222 5px, transparent 5px) 0px 10px,
+    linear-gradient(207deg, #222 5px, transparent 5px) 10px 5px,
+    linear-gradient(90deg, #1b1b1b 10px, transparent 10px),
+    linear-gradient(#1d1d1d 25%, #1a1a1a 25%, #1a1a1a 50%, transparent 50%, transparent 75%, #242424 75%, #242424);
     background-color: #131313;
     background-size: 20px 20px;
     box-shadow: 0 0 10px #FF7F00;
@@ -179,7 +179,6 @@ header h1 {
     transition: top 1s;
 }
 
-
 /*******************
  Pop Ups
  *******************/
@@ -258,10 +257,10 @@ header h1 {
     display: none;
 }
 
-#challenge:checked ~ label{
-    background: rgba(255,127,0, 0.6);
+#challenge:checked ~ label {
+    background: rgba(255, 127, 0, 0.6);
     border-radius: 100%;
-    box-shadow: 0 0 10px rgba(255,127,0, 0.6);
+    box-shadow: 0 0 10px rgba(255, 127, 0, 0.6);
 }
 
 .pop-up.start .challenge {
@@ -292,7 +291,7 @@ header h1 {
 /* Win Game */
 
 .pop-up.win {
-    background: rgba(255,255,255,1);
+    background: rgba(255, 255, 255, 1);
     display: flex;
     flex-flow: column wrap;
     box-shadow: inset 0 0 100px #000;
@@ -335,9 +334,8 @@ header h1 {
 
 /* Lose Game */
 
-
 .pop-up.lose {
-    background: rgba(0,0,0,1);
+    background: rgba(0, 0, 0, 1);
     display: flex;
     flex-flow: column;
     box-shadow: inset 0 0 100px #FF7F00;
@@ -449,7 +447,7 @@ header h1 {
     }
 }
 
-@media screen and (max-width: 670px){
+@media screen and (max-width: 670px) {
     body, html {
         background-image: url("../assets/images/dark_wall-small.jpg");
     }
@@ -525,12 +523,11 @@ header h1 {
         font-size: 3.5vw;
         order: 2;
     }
+
     .pop-up.lose {
         flex-flow: column wrap;
         justify-content: center;
     }
-
-
 
     .pop-up.lose .img-holder {
         flex-basis: 100%;
