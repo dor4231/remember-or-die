@@ -312,7 +312,7 @@ header h1 {
 }
 
 .pop-up.win h3 {
-    font-size: 5em;
+    font-size: 8vw;
     flex-basis: 15%;
     margin: 0;
     font-family: 'Handlee', cursive;
@@ -326,7 +326,7 @@ header h1 {
     margin: 0 20%;
     font-family: 'Handlee', cursive;
     color: #fff;
-    font-size: 2.4em;
+    font-size: 2.7vw;
     text-shadow: 1px 1px 10px #000;
 }
 
@@ -422,7 +422,7 @@ header h1 {
     }
 
     .pop-up.win p {
-        font-size: 5vw;
+        font-size: 3.7vw;
     }
 
     .pop-up.lose h3 {
@@ -493,16 +493,17 @@ header h1 {
     }
 
     .pop-up.win h3 {
-        flex-basis: 30%;
+        flex-basis: 21%;
         text-align: left;
+        font-size: 8vw;
     }
 
     .pop-up.win p {
         flex-basis: 30%;
-        width: 50%;
+        width: 45%;
         text-align: left;
         margin: 0;
-        font-size: 4vw;
+        font-size: 3.5vw;
     }
     .pop-up.lose {
         flex-flow: column wrap;
