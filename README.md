@@ -24,6 +24,9 @@ your internet connection and refresh the page.
 Responsive Images is used to reduce the size of some images on the
 project. Added to the default grunt configuration. Simply run 'grunt'
 to generate the images in three sizes (large, medium and small).
+
+In order to work you need to install "imagemagick" from [here](https://www.imagemagick.org/script/download.php).
+
 *** Generated images add to the git repo. 
 
 ## Rating mechanism:
