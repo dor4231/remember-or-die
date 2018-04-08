@@ -3,13 +3,13 @@ document.addEventListener("DOMContentLoaded", function () {
     const playerState = document.querySelector(".health-avatar img");
     const imgStack = [
         "https://picsum.photos/200",
-        "https://picsum.photos/201",
-        "https://picsum.photos/202",
-        "https://picsum.photos/203",
-        "https://picsum.photos/204",
-        "https://picsum.photos/205",
-        "https://picsum.photos/206",
-        "https://picsum.photos/207"
+        "https://picsum.photos/210",
+        "https://picsum.photos/220",
+        "https://picsum.photos/230",
+        "https://picsum.photos/240",
+        "https://picsum.photos/250",
+        "https://picsum.photos/260",
+        "https://picsum.photos/270"
     ];
     const imgStackTemp = [];
 
@@ -84,13 +84,15 @@ document.addEventListener("DOMContentLoaded", function () {
 
     // Creating and appending the cards into th card-board (the document).
     const createCards = function (deck) {
+        const fragment = document.createDocumentFragment()
         for (let i = 0; i < deck.length; i++) {
             const div = document.createElement("div");
             div.classList.add("play-card");
             div.id = `${i}`;
 
-            board.appendChild(div)
+            fragment.appendChild(div);
         }
+        board.appendChild(fragment);
     };
 
     // Creating and HTTP GET request to get the images from the array "imgStack"
