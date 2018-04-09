@@ -11,7 +11,7 @@ document.addEventListener("DOMContentLoaded", function () {
         "https://picsum.photos/260",
         "https://picsum.photos/270"
     ];
-    const imgStackTemp = [];
+    const imgStackResponse = [];
 
     // Declaring global variables to change later
     let player;
@@ -23,13 +23,13 @@ document.addEventListener("DOMContentLoaded", function () {
     let waiting = true;
 
     // Waiting the number of "ms" (milliseconds) passed as an argument
-    function sleep(ms) {
+    const sleep = function(ms) {
         return new Promise(resolve => setTimeout(resolve, ms));
-    }
+    };
 
     // Creating an array of number pairs from 1 to "number"/2
     // For example: createDeck(4) => [1,1,2,2]
-    function createDeck(number) {
+    const createDeck = function(number) {
         console.log(`Creating ${number} cards!`);
         const deck = new Array(number);
         for (let i = 0; i < number / 2; i++) {
@@ -37,7 +37,7 @@ document.addEventListener("DOMContentLoaded", function () {
             deck[i * 2 + 1] = i;
         }
         return deck;
-    }
+    };
 
     // Changing the player state depending on the wrong guess he make
     // If user choose "Challenging Mode" the he can lose the game and die
@@ -107,7 +107,7 @@ document.addEventListener("DOMContentLoaded", function () {
             oReq.responseType = "blob";
 
             oReq.onload = function () {
-                imgStackTemp.push(oReq.response);
+                imgStackResponse.push(oReq.response);
             };
 
             oReq.send();
@@ -123,7 +123,7 @@ document.addEventListener("DOMContentLoaded", function () {
 
         } else {
             card.classList.add("selected");
-            const imgUrl = window.URL.createObjectURL(imgStackTemp[cardBoard[card.id]]);
+            const imgUrl = window.URL.createObjectURL(imgStackResponse[cardBoard[card.id]]);
             card.style.backgroundImage = `url(${imgUrl})`;
             card.style.backgroundRepeat = "no-repeat";
             card.style.backgroundSize = "cover";
